@@ -42,8 +42,12 @@
   --e:cubic-bezier(.4,0,.15,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:155px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* les sections visées par le menu : marge d'ancrage sous le header fixe */
+#carte,#specialites,#infos,#venir{scroll-margin-top:88px}
+/* les catégories internes passent aussi sous la barre d'onglets collante */
+.cat{scroll-margin-top:150px}
 body{
   margin:0;background:var(--noir);color:var(--sable);
   font-family:var(--corps);font-size:clamp(1.02rem,.99rem + .2vw,1.09rem);line-height:1.62;
@@ -113,7 +117,7 @@ h2.dsp{font-size:clamp(2.05rem,1.2rem + 3.6vw,3.9rem)}
 .nav a:hover::after{right:0}
 .hdr .btn{padding:.68rem 1.1rem;font-size:.88rem}
 
-.burger{display:none;background:none;border:2px solid rgba(243,198,105,.55);border-radius:11px;padding:.5rem .62rem}
+.burger{display:none;position:relative;z-index:158;background:none;border:2px solid rgba(243,198,105,.55);border-radius:11px;padding:.5rem .62rem}
 .burger span{display:block;width:20px;height:2px;background:var(--or);margin:4px 0;border-radius:2px;transition:transform .25s var(--e),opacity .2s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
@@ -121,11 +125,35 @@ h2.dsp{font-size:clamp(2.05rem,1.2rem + 3.6vw,3.9rem)}
 @media (max-width:1080px){
   .burger{display:block;order:3}
   .hdr .btn--fant{display:none}
-  .nav{position:absolute;inset:100% 0 auto;flex-direction:column;align-items:stretch;gap:0;
-    background:var(--noir-2);border-bottom:2px solid rgba(243,198,105,.35);padding:0 var(--pad) 1rem;display:none}
-  .nav[data-open="1"]{display:flex}
-  .nav a{padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.11);font-size:1rem}
+
+  /* Menu = panneau fixe plein écran, superposé (ne rallonge jamais la page) */
+  .nav{
+    position:fixed;inset:0;z-index:155;
+    display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#101015,#0A0A0C);
+    padding:calc(80px + env(safe-area-inset-top)) var(--pad) calc(1.5rem + env(safe-area-inset-bottom));
+    gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity .28s var(--e),transform .28s var(--e),visibility .28s;
+  }
+  .nav[data-open="1"]{opacity:1;visibility:visible;transform:none}
+  .nav::before{
+    content:"Menu";position:absolute;top:calc(26px + env(safe-area-inset-top));left:var(--pad);
+    font-family:var(--corps);font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--or-2);
+  }
+  .nav a{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.15rem .2rem;border-bottom:1px solid rgba(255,255,255,.1);
+    font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--sable);
+  }
+  .nav a::after{content:"→";position:static;height:auto;width:auto;background:none;color:var(--or-3);
+    font-family:var(--corps);font-size:1.1rem;transition:transform .2s var(--e)}
+  .nav a:active::after{transform:translateX(4px)}
+  .nav__cta{display:flex;flex-direction:column;gap:.6rem;margin-top:1.6rem}
+  .nav__cta .btn{width:100%;justify-content:center;padding:1rem}
+  body.menu-ouvert{overflow:hidden}   /* fige la page derrière le menu */
 }
+@media (min-width:1081px){ .nav__cta{display:none} }
 
 .statut{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:800;
   padding:.38rem .8rem;border-radius:999px;border:1.5px solid}
@@ -407,6 +435,10 @@ h2.dsp{font-size:clamp(2.05rem,1.2rem + 3.6vw,3.9rem)}
       <a href="#specialites">La maison</a>
       <a href="#infos">Infos &amp; horaires</a>
       <a href="#venir">Nous trouver</a>
+      <div class="nav__cta">
+        <a class="btn btn--or" href="tel:+33767250992">Appeler · 07 67 25 09 92</a>
+        <a class="btn btn--uber" href="https://www.ubereats.com/fr/store/odelice-85/arvcv6uAU-CIbaX2Lfj9jA" target="_blank" rel="noopener">Livraison Uber Eats</a>
+      </div>
     </nav>
 
     <a class="btn btn--fant" href="tel:+33767250992">
@@ -800,21 +832,16 @@ function secours(txt){
 }
 tC.addEventListener('click',function(){ copier(aCopier,this); });
 
+/* Les liens d'ancre (#) sont laissés au navigateur : défilement natif, fluide,
+   qui respecte scroll-padding-top et ne lutte jamais contre la molette.
+   Ce gestionnaire ne s'occupe QUE du téléphone et des liens externes,
+   pour l'aperçu intégré qui bloque les ouvertures. */
 document.addEventListener('click',function(e){
   var a=e.target.closest('a[href]'); if(!a) return;
   var href=a.getAttribute('href');
 
-  if(href.charAt(0)==='#'){
-    if(href==='#') return;
-    var c=document.querySelector(href);
-    if(c){
-      e.preventDefault();
-      var y=c.getBoundingClientRect().top+scrollY-(href==='#haut'?0:105);
-      scrollTo({top:Math.max(y,0),behavior:reduce?'auto':'smooth'});
-      if(history.replaceState) history.replaceState(null,'',href);
-    }
-    return;
-  }
+  if(href.charAt(0)==='#'){ return; }   /* natif */
+
   if(/^tel:/i.test(href)){
     if(enCadre){ e.preventDefault(); montrer('Appelez O\u2019Délices 85 :',TEL_AFF,'Copier le numéro'); }
     return;
@@ -993,22 +1020,28 @@ menuEl.innerHTML=html; tabsEl.innerHTML=tabs;
 var tabBtns=tabsEl.querySelectorAll('button');
 tabBtns.forEach(function(b){
   b.addEventListener('click',function(){
+    /* on cible l'ancre native via son scroll-margin-top (150px) : un seul scroll, aucune correction */
     var el=document.getElementById('cat-'+b.dataset.go);
-    scrollTo({top:el.getBoundingClientRect().top+scrollY-160,behavior:reduce?'auto':'smooth'});
+    el.scrollIntoView({block:'start', behavior: reduce?'auto':'smooth'});
+    majTab(b.dataset.go);
   });
 });
 function majTab(id){
   tabBtns.forEach(function(b){
-    if(b.dataset.go===id){
-      b.setAttribute('aria-current','true');
-      b.scrollIntoView({block:'nearest',inline:'center',behavior:reduce?'auto':'smooth'});
-    } else { b.removeAttribute('aria-current'); }
+    var on = b.dataset.go===id;
+    if(on){ b.setAttribute('aria-current','true'); } else { b.removeAttribute('aria-current'); }
   });
+  /* centre l'onglet actif DANS le ruban horizontal, sans jamais bouger la page */
+  var act=tabsEl.querySelector('[aria-current="true"]');
+  if(act){
+    var box=tabsEl.getBoundingClientRect(), a=act.getBoundingClientRect();
+    tabsEl.scrollLeft += (a.left + a.width/2) - (box.left + box.width/2);
+  }
 }
 if('IntersectionObserver' in window){
   var spy=new IntersectionObserver(function(en){
     en.forEach(function(e){ if(e.isIntersecting){ majTab(e.target.dataset.cat); } });
-  },{rootMargin:'-160px 0px -70% 0px'});
+  },{rootMargin:'-150px 0px -72% 0px'});
   menuEl.querySelectorAll('.cat[data-cat]').forEach(function(s){ spy.observe(s); });
 }
 majTab(CARTE[0].id);
@@ -1104,18 +1137,25 @@ function statut(){
 }
 statut(); setInterval(statut,60000);
 
-/* ---------- Menu mobile / header / défilement ---------- */
+/* ---------- Menu mobile (overlay plein écran) ---------- */
 var burger=document.getElementById('burger'), nav=document.getElementById('nav');
+function ouvrirMenu(v){
+  burger.setAttribute('aria-expanded',String(v));
+  burger.setAttribute('aria-label', v ? 'Fermer le menu' : 'Ouvrir le menu');
+  nav.dataset.open = v ? '1':'0';
+  document.body.classList.toggle('menu-ouvert', v);
+}
 burger.addEventListener('click',function(){
-  var o=burger.getAttribute('aria-expanded')==='true';
-  burger.setAttribute('aria-expanded',String(!o));
-  nav.dataset.open = o?'0':'1';
+  ouvrirMenu(burger.getAttribute('aria-expanded')!=='true');
 });
 nav.addEventListener('click',function(e){
-  if(e.target.tagName==='A' && innerWidth<=1080){
-    burger.setAttribute('aria-expanded','false'); nav.dataset.open='0';
-  }
+  /* un clic sur un lien ferme le menu ; le défilement se fait en natif */
+  if(e.target.closest('a')){ ouvrirMenu(false); }
 });
+addEventListener('keydown',function(e){ if(e.key==='Escape' && nav.dataset.open==='1'){ ouvrirMenu(false); } });
+/* si on repasse en grand écran menu ouvert, on nettoie l'état */
+addEventListener('resize',function(){ if(innerWidth>1080 && nav.dataset.open==='1'){ ouvrirMenu(false); } });
+
 var hdr=document.getElementById('hdr'), prog=document.getElementById('prog'), haut=document.getElementById('haut-btn');
 function onScroll(){
   var y=scrollY, max=document.body.scrollHeight-innerHeight;
