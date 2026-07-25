@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://odelices85.fr/sitemap.xml
