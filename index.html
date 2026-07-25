@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O'Délices 85 — Kebab, burgers &amp; couscous à Saint-Jean-de-Monts</title>
+<meta name="description" content="O'Délices 85, street food des dunes à Saint-Jean-de-Monts. Kebab, burgers, tacos, couscous et spécialités orientales. Ouvert 7j/7 de 11 h à 1 h. Commande au 07 67 25 09 92 ou livraison Uber Eats.">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="canonical" href="https://odelices85.fr/">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="O'Délices 85">
+<meta property="og:title" content="O'Délices 85 — Street food des dunes">
+<meta property="og:description" content="Kebab, burgers, tacos, couscous. Saint-Jean-de-Monts, ouvert tous les jours de 11 h à 1 h.">
+<meta property="og:image" content="https://odelices85.fr/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230A0A0C'/><circle cx='32' cy='30' r='16' fill='%23F3C669'/><path d='M10 46h44' stroke='%2335A8D8' stroke-width='4'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&amp;family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   1 · TOKENS — contrastes mesurés, tous ≥ 4,5:1
+   ========================================================== */
+:root{
+  --noir:#0A0A0C; --noir-2:#131318; --noir-3:#1D1D24;
+  --or:#F3C669; --or-2:#EFBB55; --or-3:#D9A23C;
+  --ambre:#7A4F08;                 /* or lisible sur papier : 6,7:1 */
+  --grad-or:linear-gradient(100deg,#C98F2C 0%,#F3C669 36%,#FFF0C4 52%,#EFBB55 70%,#C98F2C 100%);
+  --pap:#FBF7EF; --pap-2:#F1E9D9; --ligne:#D4C8AE;
+  --encre:#14110C;                 /* 17,6:1 */
+  --encre-2:#4E4638;               /* 8,7:1  */
+  --sable:#F6F1E7; --sable-2:#D8CFBD; --gris:#ABA394;
+  --soleil:#FF8A3D; --mer:#35A8D8;
+
+  --display:"Fraunces",Georgia,serif;
+  --corps:"Manrope",system-ui,-apple-system,sans-serif;
+  --pad:clamp(1.1rem,4.5vw,3.25rem);
+  --max:1240px;
+  --colp:104px;                    /* largeur d'une colonne de prix */
+  --e:cubic-bezier(.4,0,.15,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:155px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--noir);color:var(--sable);
+  font-family:var(--corps);font-size:clamp(1.02rem,.99rem + .2vw,1.09rem);line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer;color:inherit}
+::selection{background:var(--or);color:var(--noir)}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px}
+
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.dsp{font-family:var(--display);font-weight:900;line-height:1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2.dsp{font-size:clamp(2.05rem,1.2rem + 3.6vw,3.9rem)}
+/* dégradé réservé aux TRÈS grands titres ; ailleurs, or plein */
+.or{background:var(--grad-or);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.or-p{color:var(--or)}
+.sur{font-size:.8rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--or-2);margin:0}
+.sec--pap .sur{color:var(--ambre)}
+.skip{position:absolute;left:-9999px;top:0;z-index:400;background:var(--or);color:#14110C;padding:.85rem 1.3rem;font-weight:800}
+.skip:focus{left:0}
+
+.filet{display:flex;align-items:center;gap:1rem;margin:0 0 clamp(1.6rem,3vw,2.6rem)}
+.filet::before,.filet::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--or-3),transparent)}
+.sec--pap .filet::before,.sec--pap .filet::after{background:linear-gradient(90deg,transparent,#B09A62,transparent)}
+.filet .star{width:15px;height:15px;flex:none;background:var(--or-3);
+  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.sec--pap .filet .star{background:var(--ambre)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-weight:800;font-size:.95rem;text-decoration:none;padding:.95rem 1.55rem;
+  border:2px solid transparent;border-radius:999px;
+  transition:transform .18s var(--e),box-shadow .25s var(--e),background .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn--or{background:var(--grad-or);color:#231600;box-shadow:0 6px 24px -8px rgba(243,198,105,.55)}
+.btn--uber{background:#06C167;color:#04231A}
+.btn--fant{background:transparent;border-color:rgba(243,198,105,.6);color:var(--sable)}
+.btn--fant:hover{border-color:var(--or);background:rgba(243,198,105,.14)}
+.sec--pap .btn--fant{border-color:#AD9A6E;color:var(--encre)}
+.sec--pap .btn--fant:hover{background:#EEE3CB;border-color:var(--ambre)}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--e),transform .7s var(--e)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ==========================================================
+   2 · HEADER
+   ========================================================== */
+.prog{position:fixed;top:0;left:0;height:3px;background:var(--grad-or);width:0;z-index:160}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:150;border-bottom:1px solid transparent;
+  transition:background .35s var(--e),border-color .35s,backdrop-filter .35s}
+.hdr[data-fix="1"]{background:rgba(8,8,10,.97);backdrop-filter:blur(14px);border-bottom-color:rgba(243,198,105,.28)}
+.hdr__in{display:flex;align-items:center;gap:1.1rem;min-height:80px;transition:min-height .3s var(--e)}
+.hdr[data-fix="1"] .hdr__in{min-height:68px}
+
+.logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-right:auto}
+.logo__mark{width:40px;height:40px;flex:none}
+.logo__txt b{display:block;font-family:var(--display);font-weight:900;font-size:1.28rem;line-height:1;color:var(--sable)}
+.logo__txt i{display:block;font-style:italic;font-family:var(--display);font-weight:600;font-size:.74rem;color:var(--or-2);margin-top:.2rem}
+@media (max-width:420px){.logo__txt i{display:none}}
+
+.nav{display:flex;gap:1.5rem;align-items:center}
+.nav a{font-size:.9rem;font-weight:700;text-decoration:none;position:relative;padding:.3rem 0;color:var(--sable)}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--or);transition:right .3s var(--e)}
+.nav a:hover::after{right:0}
+.hdr .btn{padding:.68rem 1.1rem;font-size:.88rem}
+
+.burger{display:none;background:none;border:2px solid rgba(243,198,105,.55);border-radius:11px;padding:.5rem .62rem}
+.burger span{display:block;width:20px;height:2px;background:var(--or);margin:4px 0;border-radius:2px;transition:transform .25s var(--e),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:1080px){
+  .burger{display:block;order:3}
+  .hdr .btn--fant{display:none}
+  .nav{position:absolute;inset:100% 0 auto;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--noir-2);border-bottom:2px solid rgba(243,198,105,.35);padding:0 var(--pad) 1rem;display:none}
+  .nav[data-open="1"]{display:flex}
+  .nav a{padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.11);font-size:1rem}
+}
+
+.statut{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:800;
+  padding:.38rem .8rem;border-radius:999px;border:1.5px solid}
+.statut i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.statut[data-on="1"]{color:#6BE8A6;border-color:rgba(107,232,166,.55);background:rgba(107,232,166,.13)}
+.statut[data-on="0"]{color:#FF9E90;border-color:rgba(255,158,144,.55);background:rgba(255,158,144,.13)}
+
+/* ==========================================================
+   3 · HERO
+   ========================================================== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:135px 0 3.5rem;overflow:hidden}
+.hero__bg{position:absolute;inset:0;z-index:0}
+.hero__glow{position:absolute;left:50%;top:54%;width:min(115vw,1000px);aspect-ratio:1;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,138,61,.26) 0%,rgba(230,166,63,.11) 33%,transparent 68%)}
+.hero__zellige{position:absolute;inset:0;opacity:.12}
+.hero__scene{position:absolute;left:0;right:0;bottom:0;z-index:0}
+.hero__vign{position:absolute;inset:0;background:
+  linear-gradient(to bottom,rgba(8,8,10,.93) 0%,rgba(8,8,10,.66) 30%,rgba(8,8,10,.82) 72%,var(--noir) 100%)}
+.hero__vign::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(8,8,10,.94) 0%,rgba(8,8,10,.74) 46%,transparent 84%)}
+.hero .wrap{position:relative;z-index:2}
+.hero__in{max-width:800px}
+.hero h1{font-size:clamp(2.9rem,1.6rem + 7vw,6.4rem);margin:.8rem 0 0;text-shadow:0 4px 34px rgba(0,0,0,.6)}
+.hero h1 .l2{display:block;font-family:var(--corps);font-weight:600;font-style:italic;
+  font-size:clamp(1rem,.9rem + .8vw,1.5rem);letter-spacing:.02em;color:var(--sable);margin-top:1rem;text-shadow:none}
+.hero__spe{display:flex;flex-wrap:wrap;gap:.55rem 1.05rem;margin:1.7rem 0 0;padding:0;list-style:none;
+  font-size:.84rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--sable-2)}
+.hero__spe li{display:flex;align-items:center;gap:1.05rem}
+.hero__spe li::after{content:"";width:5px;height:5px;background:var(--or-3);transform:rotate(45deg)}
+.hero__spe li:last-child::after{display:none}
+.hero p.acc{margin:1.8rem 0 2.2rem;max-width:52ch;color:var(--sable-2);font-size:clamp(1.06rem,1rem + .35vw,1.22rem)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.7rem}
+.hero__meta{display:flex;flex-wrap:wrap;gap:.9rem 2rem;margin-top:2.5rem;padding-top:1.6rem;border-top:1px solid rgba(243,198,105,.3)}
+.meta{display:flex;align-items:center;gap:.5rem;font-size:.92rem;color:var(--sable-2)}
+.meta b{color:var(--sable);font-weight:800}
+.etoiles{display:inline-flex;gap:2px}
+.etoiles svg{width:16px;height:16px;fill:var(--or)}
+
+/* ==========================================================
+   4 · RUBAN
+   ========================================================== */
+.ruban{background:var(--grad-or);color:#231600;padding:.85rem 0;overflow:hidden;border-block:2px solid rgba(0,0,0,.25)}
+.ruban__t{display:flex;width:max-content;animation:defile 34s linear infinite}
+.ruban:hover .ruban__t{animation-play-state:paused}
+.ruban span{display:flex;align-items:center;gap:1.3rem;padding-inline:1.3rem;white-space:nowrap;
+  font-family:var(--display);font-weight:900;font-size:clamp(1rem,.9rem + .4vw,1.3rem)}
+.ruban span::after{content:"";width:7px;height:7px;background:#231600;transform:rotate(45deg);flex:none}
+@keyframes defile{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ruban__t{animation:none}}
+
+/* ==========================================================
+   5 · SECTIONS
+   ========================================================== */
+.sec{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
+.sec--pap{background:var(--pap);color:var(--encre)}
+.sec__head{display:grid;grid-template-columns:1fr .9fr;gap:2rem;align-items:end;margin-bottom:clamp(1.8rem,3.5vw,3rem)}
+.sec__head p{margin:0;max-width:52ch;color:var(--sable-2)}
+.sec--pap .sec__head p{color:var(--encre-2)}
+@media (max-width:820px){.sec__head{grid-template-columns:1fr;align-items:start}}
+
+.atouts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(243,198,105,.25);border:1px solid rgba(243,198,105,.25)}
+.atout{background:var(--noir);padding:1.9rem 1.5rem;transition:background .3s var(--e)}
+.atout:hover{background:var(--noir-2)}
+.atout svg{width:28px;height:28px;stroke:var(--or);fill:none;stroke-width:1.6;margin-bottom:1rem}
+.atout h3{font-family:var(--display);font-weight:700;font-size:1.18rem;margin:0 0 .45rem;color:var(--sable)}
+.atout p{margin:0;font-size:.95rem;color:var(--sable-2)}
+@media (max-width:900px){.atouts{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.atouts{grid-template-columns:1fr}}
+
+/* ==========================================================
+   6 · LA CARTE — grille stricte : en-têtes et prix sur les
+   MÊMES colonnes, impossible de décaler
+   ========================================================== */
+.outils{position:sticky;top:68px;z-index:80;background:#FFFDF8;border-bottom:2px solid var(--ligne);
+  padding:.9rem 0;box-shadow:0 8px 20px -16px rgba(0,0,0,.6)}
+.outils__in{display:flex;gap:.8rem;align-items:center}
+.rech{flex:1;position:relative;max-width:340px}
+.rech input{width:100%;background:#fff;border:2px solid var(--ligne);border-radius:999px;
+  padding:.7rem 2.4rem .7rem 2.7rem;font-family:var(--corps);font-size:.98rem;font-weight:600;color:var(--encre)}
+.rech input::placeholder{color:#6E6656;font-weight:500}
+.rech input:focus{outline:none;border-color:var(--ambre);box-shadow:0 0 0 3px rgba(122,79,8,.18)}
+.rech>svg{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:#4E4638;fill:none;stroke-width:2}
+.rech button{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:none;border:0;
+  color:var(--encre-2);font-size:1.3rem;line-height:1;padding:.15rem .4rem;display:none}
+.rech[data-full="1"] button{display:block}
+
+.tabs{display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none;flex:1}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{white-space:nowrap;background:#fff;border:2px solid var(--ligne);border-radius:999px;
+  padding:.52rem 1rem;font-size:.88rem;font-weight:700;color:#332E24;transition:background .2s,color .2s,border-color .2s}
+.tabs button:hover{border-color:var(--ambre)}
+.tabs button[aria-current="true"]{background:var(--encre);border-color:var(--encre);color:var(--or)}
+@media (max-width:880px){.outils__in{flex-direction:column;align-items:stretch}.rech{max-width:none}}
+
+.cat{padding-top:clamp(2.4rem,4vw,3.6rem)}
+.cat__t{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
+  border-bottom:3px solid var(--encre);padding-bottom:.55rem;margin-bottom:.95rem}
+.cat__t h3{font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,1.1rem + 1.7vw,2.45rem);
+  margin:0;letter-spacing:-.02em;color:var(--encre)}
+.cat__t em{font-style:normal;font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ambre)}
+.cat__note{margin:0 0 1.2rem;font-size:.97rem;color:var(--encre-2);max-width:66ch;line-height:1.55}
+
+/* --- LA grille commune --- */
+.ligne{display:grid;grid-template-columns:1fr var(--colp) var(--colp);gap:.5rem 1.1rem;align-items:center;padding-inline:.85rem}
+.ligne--1{grid-template-columns:1fr var(--colp)}
+.cat__cols{font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--encre-2);padding-bottom:.5rem;border-bottom:1px solid var(--ligne);margin-bottom:.3rem}
+.cat__cols span{text-align:center}
+.item{padding-block:.95rem;border-radius:10px;transition:background .18s}
+.item--alt{background:var(--pap-2)}
+.item:hover{background:#EBDFC3}
+.item__i{min-width:0}
+.item__n{font-weight:800;font-size:1.1rem;letter-spacing:-.01em;color:var(--encre);
+  display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;line-height:1.3}
+.item__d{display:block;font-weight:500;font-size:.94rem;color:var(--encre-2);margin-top:.22rem;line-height:1.45}
+.badge{font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .5rem;border-radius:5px}
+.badge--v{background:#1B5514;color:#fff}
+.badge--n{background:#231600;color:var(--or)}
+
+.p{width:100%;padding:.6rem .3rem;font-weight:800;font-size:1.04rem;font-variant-numeric:tabular-nums;
+  background:#fff;border:2px solid #B3A480;border-radius:10px;color:var(--encre);
+  transition:background .16s,color .16s,border-color .16s,transform .1s;position:relative;display:block}
+.p:hover{background:var(--encre);border-color:var(--encre);color:var(--or)}
+.p:active{transform:scale(.96)}
+.p i{display:none;font-style:normal;font-size:.66rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--encre-2);margin-bottom:.15rem}
+.p:hover i{color:var(--or-2)}
+.p--vide{background:transparent;border-color:transparent;color:#8E8674;cursor:default;font-weight:600}
+.p--vide:hover{background:transparent;color:#8E8674}
+.p[data-add="1"]::after{content:"✓ Ajouté";position:absolute;inset:-2px;display:grid;place-items:center;
+  background:#1B5514;color:#fff;border-radius:10px;font-size:.8rem;animation:pop 1s var(--e) forwards}
+@keyframes pop{0%{opacity:0;transform:scale(.8)}18%{opacity:1;transform:scale(1)}80%{opacity:1}100%{opacity:0}}
+
+/* Sur mobile : le nom prend toute la largeur, les prix passent
+   dessous, côte à côte, chacun avec son propre libellé */
+@media (max-width:660px){
+  .ligne{grid-template-columns:1fr 1fr;gap:.55rem .6rem;padding-inline:.7rem}
+  .ligne--1{grid-template-columns:1fr 1fr}
+  .item__i{grid-column:1/-1}
+  .ligne--1 .item__c{grid-column:1/2}
+  .cat__cols{display:none}
+  .p i{display:block}
+  .p{padding:.5rem .3rem}
+}
+
+.astuce{display:flex;align-items:center;gap:.7rem;font-size:.95rem;font-weight:600;color:var(--encre);
+  background:#F0E4C8;border-left:5px solid var(--ambre);padding:.9rem 1.1rem;border-radius:0 10px 10px 0;margin:1.5rem 0 0}
+.astuce svg{width:20px;height:20px;stroke:var(--ambre);fill:none;stroke-width:2;flex:none}
+.sauces{display:flex;flex-wrap:wrap;gap:.45rem;margin:.6rem 0 0;padding:0;list-style:none}
+.sauces li{font-size:.9rem;font-weight:700;border:2px solid var(--ligne);background:#fff;border-radius:999px;padding:.42rem .85rem;color:var(--encre)}
+.vide{padding:2.5rem 0;text-align:center;color:var(--encre-2);font-weight:600}
+
+/* ==========================================================
+   7 · PANIER
+   ========================================================== */
+.panier-bar{position:fixed;left:0;right:0;bottom:0;z-index:140;transform:translateY(115%);
+  transition:transform .35s var(--e);background:#08080A;border-top:2px solid var(--or-3);
+  padding:.85rem var(--pad) calc(.85rem + env(safe-area-inset-bottom))}
+.panier-bar[data-on="1"]{transform:none}
+.panier-bar__in{max-width:var(--max);margin-inline:auto;display:flex;align-items:center;gap:.7rem}
+.panier-bar b{font-family:var(--display);font-size:1.3rem;font-weight:900;color:var(--or)}
+.panier-bar small{display:block;font-size:.8rem;color:var(--gris)}
+.panier-bar .btn{padding:.75rem 1.15rem;font-size:.88rem}
+
+.tiroir{position:fixed;inset:0;z-index:170;visibility:hidden}
+.tiroir[data-open="1"]{visibility:visible}
+.tiroir__fond{position:absolute;inset:0;background:rgba(4,4,6,.82);opacity:0;transition:opacity .35s}
+.tiroir[data-open="1"] .tiroir__fond{opacity:1}
+.tiroir__pan{position:absolute;right:0;top:0;bottom:0;width:min(450px,100%);background:var(--noir-2);
+  border-left:2px solid rgba(243,198,105,.4);display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .38s var(--e)}
+.tiroir[data-open="1"] .tiroir__pan{transform:none}
+.tiroir__h{display:flex;align-items:center;justify-content:space-between;padding:1.25rem var(--pad);border-bottom:1px solid rgba(255,255,255,.13)}
+.tiroir__h h2{font-family:var(--display);font-size:1.45rem;margin:0;color:var(--sable)}
+.x{background:none;border:2px solid rgba(255,255,255,.32);border-radius:50%;width:38px;height:38px;font-size:1.2rem;line-height:1}
+.tiroir__l{flex:1;overflow-y:auto;padding:.5rem var(--pad)}
+.lg{display:grid;grid-template-columns:1fr auto auto;gap:.7rem;align-items:center;padding:.95rem 0;border-bottom:1px solid rgba(255,255,255,.11)}
+.lg b{display:block;font-size:1rem;font-weight:800;color:var(--sable)}
+.lg small{color:var(--gris);font-size:.82rem}
+.qte{display:flex;align-items:center;gap:.15rem;border:2px solid rgba(255,255,255,.28);border-radius:999px}
+.qte button{width:32px;height:32px;background:none;border:0;border-radius:50%;font-size:1.1rem;line-height:1}
+.qte button:hover{background:rgba(243,198,105,.22);color:var(--or)}
+.qte span{min-width:24px;text-align:center;font-weight:800;font-size:.94rem}
+.lg__p{font-weight:800;font-variant-numeric:tabular-nums;min-width:70px;text-align:right;color:var(--or)}
+.tiroir__f{padding:1.15rem var(--pad) calc(1.15rem + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.13);display:grid;gap:.6rem}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--display);font-size:1.6rem;font-weight:900;color:var(--sable)}
+.tiroir__f .btn{width:100%}
+.mini{font-size:.82rem;color:var(--gris);text-align:center;margin:0;line-height:1.5}
+
+/* ==========================================================
+   8 · INFOS / CARTE GOOGLE
+   ========================================================== */
+.infos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:900px){.infos{grid-template-columns:1fr}}
+.horaires{width:100%;border-collapse:collapse;margin-top:1.2rem}
+.horaires th,.horaires td{padding:.7rem 0;border-bottom:1px solid rgba(243,198,105,.22);text-align:left;font-size:1rem;font-weight:600;color:var(--sable-2)}
+.horaires td{text-align:right;font-variant-numeric:tabular-nums}
+.horaires tr[data-today="1"] th,.horaires tr[data-today="1"] td{color:var(--or);font-weight:800}
+.bloc{border:1.5px solid rgba(243,198,105,.32);padding:1.55rem;border-radius:16px;background:rgba(243,198,105,.05)}
+.bloc h3{font-family:var(--display);font-size:1.28rem;margin:0 0 .85rem;color:var(--sable)}
+.bloc p{margin:0 0 1rem;color:var(--sable-2);font-size:.98rem}
+.paiements{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:0;padding:0}
+.paiements li{font-size:.86rem;font-weight:700;border:1.5px solid rgba(243,198,105,.45);border-radius:999px;padding:.44rem .9rem;color:var(--sable)}
+
+.plan{border:1.5px solid rgba(243,198,105,.32);border-radius:16px;overflow:hidden;background:var(--noir-2)}
+.plan__t{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1.1rem;
+  border-bottom:1px solid rgba(243,198,105,.22);font-size:.86rem;font-weight:700;color:var(--sable-2)}
+.plan__t a{color:var(--or);text-decoration:none;font-weight:800;white-space:nowrap}
+.plan__t a:hover{text-decoration:underline}
+.plan__v{position:relative;aspect-ratio:16/11}
+.plan__v iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}
+.plan__f{position:absolute;inset:0;z-index:1;display:grid;place-content:center;text-align:center;gap:.7rem;padding:1.5rem;
+  background:repeating-linear-gradient(45deg,#131318,#131318 12px,#16161C 12px,#16161C 24px)}
+.plan__f b{font-family:var(--display);font-size:1.15rem;color:var(--sable)}
+.plan__f span{font-size:.9rem;color:var(--gris)}
+
+.note-g{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.note-g b{font-family:var(--display);font-size:2.8rem;font-weight:900;line-height:1;color:var(--or)}
+
+/* ==========================================================
+   9 · FINAL / FOOTER / TOAST
+   ========================================================== */
+.final{position:relative;text-align:center;padding:clamp(4rem,9vw,7rem) 0;overflow:hidden}
+.final::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(120vw,900px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,138,61,.19),transparent 62%)}
+.final .wrap{position:relative;z-index:1}
+.final p{max-width:48ch;margin:1.2rem auto 2rem;color:var(--sable-2)}
+.final__cta{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+
+.ftr{background:#07070A;padding:clamp(2.5rem,5vw,3.5rem) 0 1.5rem;font-size:.95rem;color:var(--gris);border-top:1px solid rgba(243,198,105,.22)}
+.ftr__g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.11)}
+@media (max-width:780px){.ftr__g{grid-template-columns:1fr;gap:1.7rem}}
+.ftr h4{font-size:.76rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--or-3);margin:0 0 .9rem}
+.ftr ul{list-style:none;margin:0;padding:0}
+.ftr li{padding:.28rem 0}
+.ftr a{text-decoration:none}
+.ftr a:hover{color:var(--or)}
+.ftr__bas{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.3rem;font-size:.82rem}
+
+.haut{position:fixed;right:1rem;bottom:5.8rem;z-index:135;width:48px;height:48px;border-radius:50%;
+  background:var(--noir-2);border:2px solid rgba(243,198,105,.5);color:var(--or);display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .3s,transform .3s}
+.haut[data-on="1"]{opacity:1;pointer-events:auto;transform:none}
+.haut svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.4}
+
+.toast{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,150%);z-index:200;
+  background:#131318;border:2px solid var(--or-3);border-radius:16px;padding:1.1rem;
+  width:min(430px,calc(100% - 2rem));box-shadow:0 20px 50px -18px rgba(0,0,0,.9);transition:transform .35s var(--e)}
+.toast[data-on="1"]{transform:translate(-50%,0)}
+.toast p{margin:0 0 .7rem;font-size:.95rem;font-weight:700;color:var(--sable)}
+.toast code{display:block;font-size:.82rem;color:var(--or);word-break:break-all;margin-bottom:.8rem;line-height:1.45}
+.toast__b{display:flex;gap:.5rem}
+.toast .btn{padding:.62rem 1rem;font-size:.86rem;flex:1}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#carte">Aller à la carte</a>
+<div class="prog" id="prog"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="#haut">
+      <svg class="logo__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#C98F2C"/><stop offset=".45" stop-color="#F3C669"/><stop offset="1" stop-color="#EFBB55"/>
+        </linearGradient></defs>
+        <path d="M32 3a29 29 0 1 0 22 47.8 24 24 0 1 1-6-42.4A28.9 28.9 0 0 0 32 3Z" fill="url(#g1)"/>
+        <circle cx="36" cy="34" r="11" fill="#FF8A3D"/>
+        <path d="M12 46h40" stroke="#35A8D8" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M16 51h34" stroke="#35A8D8" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <span class="logo__txt"><b>O'Délices <span class="or-p">85</span></b><i>street food des dunes</i></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#carte">La carte</a>
+      <a href="#specialites">La maison</a>
+      <a href="#infos">Infos &amp; horaires</a>
+      <a href="#venir">Nous trouver</a>
+    </nav>
+
+    <a class="btn btn--fant" href="tel:+33767250992">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      07 67 25 09 92
+    </a>
+    <a class="btn btn--uber" href="https://www.ubereats.com/fr/store/odelice-85/arvcv6uAU-CIbaX2Lfj9jA" target="_blank" rel="noopener">Commander</a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="haut">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__glow"></div>
+    <svg class="hero__zellige" width="100%" height="100%">
+      <defs><pattern id="zel" width="72" height="72" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="#F3C669" stroke-width="1">
+          <rect x="18" y="18" width="36" height="36"/>
+          <rect x="18" y="18" width="36" height="36" transform="rotate(45 36 36)"/>
+          <circle cx="36" cy="36" r="4"/><path d="M0 36h10M62 36h10M36 0v10M36 62v10"/>
+        </g>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#zel)"/>
+    </svg>
+    <svg class="hero__scene" viewBox="0 0 1440 460" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFD98A"/><stop offset="55%" stop-color="#FF9A3C"/><stop offset="100%" stop-color="#E0651F"/>
+        </linearGradient>
+        <linearGradient id="mer" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#123044" stop-opacity=".95"/><stop offset="100%" stop-color="#0A0A0C"/>
+        </linearGradient>
+      </defs>
+      <circle cx="920" cy="250" r="150" fill="url(#sun)" opacity=".88"/>
+      <rect x="0" y="250" width="1440" height="210" fill="url(#mer)"/>
+      <g fill="#FFB55A" opacity=".48">
+        <rect x="800" y="262" width="240" height="5" rx="2"/><rect x="840" y="278" width="160" height="4" rx="2"/>
+        <rect x="780" y="294" width="280" height="5" rx="2"/><rect x="860" y="312" width="120" height="4" rx="2"/>
+        <rect x="760" y="330" width="320" height="5" rx="2"/><rect x="840" y="350" width="170" height="4" rx="2"/>
+        <rect x="800" y="372" width="250" height="5" rx="2"/><rect x="870" y="396" width="110" height="4" rx="2"/>
+      </g>
+      <g stroke="#F3C669" stroke-width="3" fill="none" opacity=".8">
+        <path d="M-20 236 L1180 252"/><path d="M-20 250 L1180 266"/>
+      </g>
+      <g stroke="#E0A63F" stroke-width="2.4" opacity=".65">
+        <path d="M40 250v52M140 251v48M240 252v44M340 253v40M440 254v36M540 255v32M640 256v28M740 257v24M840 258v20M940 259v17M1040 260v14M1140 261v12"/>
+      </g>
+      <g fill="none" stroke="#F6F1E7" stroke-width="2.4" opacity=".7">
+        <path d="M1190 110c8-9 14-9 20 0 6-9 12-9 20 0"/>
+        <path d="M1290 155c6-7 11-7 15 0 5-7 9-7 14 0"/>
+        <path d="M1130 180c5-6 9-6 12 0 4-6 7-6 11 0"/>
+      </g>
+    </svg>
+    <div class="hero__vign"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero__in">
+      <p class="sur rv on">Saint-Jean-de-Monts · Vendée · Depuis 2023</p>
+      <h1 class="dsp rv on"><span class="or">O'Délices 85</span><span class="l2">street food des dunes</span></h1>
+      <ul class="hero__spe rv on"><li>Kebab</li><li>Burgers</li><li>Tacos</li><li>Couscous</li><li>Spécialités orientales</li></ul>
+      <p class="acc rv on">Viande de veau et de dinde travaillée sur place, frites maison coupées ici,
+        couscous et grillades. Sur place, à emporter ou livré — tous les jours jusqu'à 1 h du matin.</p>
+      <div class="hero__cta rv on">
+        <a class="btn btn--or" href="tel:+33767250992">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          07 67 25 09 92
+        </a>
+        <a class="btn btn--uber" href="https://www.ubereats.com/fr/store/odelice-85/arvcv6uAU-CIbaX2Lfj9jA" target="_blank" rel="noopener">Livraison Uber Eats</a>
+        <a class="btn btn--fant" href="#carte">Voir la carte</a>
+      </div>
+      <div class="hero__meta rv on">
+        <span class="meta" id="statut-hero"></span>
+        <span class="meta">
+          <span class="etoiles" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+          </span>
+          <b>4,3</b> / 5 · 299 avis
+        </span>
+        <span class="meta">Ouvert <b>7j/7</b> · 11 h – 1 h</span>
+        <span class="meta">Comptez <b>1 à 10 €</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RUBAN ===================== -->
+<div class="ruban" aria-hidden="true">
+  <div class="ruban__t">
+    <span>Kebab</span><span>Frites maison</span><span>Tacos XXL</span><span>Couscous</span><span>Burgers</span>
+    <span>Cheese naan</span><span>Souris d'agneau</span><span>Menu enfant</span>
+    <span>Kebab</span><span>Frites maison</span><span>Tacos XXL</span><span>Couscous</span><span>Burgers</span>
+    <span>Cheese naan</span><span>Souris d'agneau</span><span>Menu enfant</span>
+  </div>
+</div>
+
+<!-- ===================== ATOUTS ===================== -->
+<section class="sec" id="specialites" style="padding-block:clamp(3rem,6vw,4.5rem)">
+  <div class="wrap">
+    <div class="filet rv"><span class="star"></span></div>
+    <div class="sec__head rv">
+      <h2 class="dsp">La maison, <span class="or">c'est ça</span></h2>
+      <p>Une carte large mais des bases simples : de la viande travaillée sur place, des frites
+        coupées maison, et des portions qui tiennent au corps après la plage.</p>
+    </div>
+    <div class="atouts">
+      <article class="atout rv">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16M6 11V8a6 6 0 0 1 12 0v3M3 11h18v2a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7Z"/></svg>
+        <h3>Viande veau &amp; dinde</h3><p>La broche est travaillée sur place et tranchée à la commande.</p>
+      </article>
+      <article class="atout rv">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8l1.5 12h9L18 8M6 8h12M6 8l1-4h10l1 4M10 12v5M14 12v5"/></svg>
+        <h3>Frites maison</h3><p>Pommes de terre fraîches, coupées et cuites ici. Jamais surgelées.</p>
+      </article>
+      <article class="atout rv">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M5 12H3m18 0h-2M6.3 6.3 4.9 4.9m14.2 1.4 1.4-1.4M12 8a4 4 0 1 1-4 4M3 20h18"/></svg>
+        <h3>Ouvert jusqu'à 1 h</h3><p>Sept jours sur sept, toute l'année. Pratique après la plage ou en sortie.</p>
+      </article>
+      <article class="atout rv">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18M5 9V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Zm5 4h6"/></svg>
+        <h3>Emporter ou livré</h3><p>Terrasse, à emporter, ou livraison Uber Eats sur Saint-Jean-de-Monts.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CARTE ===================== -->
+<section class="sec sec--pap" id="carte" style="padding-top:clamp(2.5rem,5vw,4rem)">
+  <div class="wrap">
+    <div class="filet rv"><span class="star"></span></div>
+    <div class="sec__head rv">
+      <h2 class="dsp">La carte</h2>
+      <p>Prix en euros, taxes comprises. Photos d'illustration non contractuelles.
+        Touchez un prix pour préparer votre commande, puis appelez : tout sera déjà noté.</p>
+    </div>
+  </div>
+
+  <div class="outils">
+    <div class="wrap outils__in">
+      <div class="rech" id="rech">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="q" placeholder="Chercher un plat, une viande…" aria-label="Rechercher dans la carte">
+        <button type="button" id="q-clear" aria-label="Effacer la recherche">×</button>
+      </div>
+      <div class="tabs" id="tabs" aria-label="Catégories de la carte"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div id="menu"></div>
+    <p class="vide" id="vide" hidden>Aucun plat ne correspond à cette recherche.</p>
+  </div>
+</section>
+
+<!-- ===================== INFOS ===================== -->
+<section class="sec" id="infos">
+  <div class="wrap">
+    <div class="filet rv"><span class="star"></span></div>
+    <div class="infos">
+      <div class="rv">
+        <h2 class="dsp">Infos <span class="or">pratiques</span></h2>
+        <div class="note-g" style="margin-top:1.6rem">
+          <b>4,3</b>
+          <span>
+            <span class="etoiles" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .9-5.1 4.9 1.3 7L12 18l-6.2 3.4 1.3-7L2 9.5l7-.9z"/></svg>
+            </span><br>
+            <b style="font-family:var(--corps);font-size:1rem;color:var(--sable)">299 avis Google</b>
+          </span>
+        </div>
+
+        <h3 style="font-family:var(--display);font-size:1.3rem;margin:2rem 0 0;color:var(--sable)">Horaires</h3>
+        <table class="horaires" id="horaires">
+          <tbody>
+            <tr data-j="1"><th scope="row">Lundi</th><td>11 h – 1 h</td></tr>
+            <tr data-j="2"><th scope="row">Mardi</th><td>11 h – 1 h</td></tr>
+            <tr data-j="3"><th scope="row">Mercredi</th><td>11 h – 1 h</td></tr>
+            <tr data-j="4"><th scope="row">Jeudi</th><td>11 h – 1 h</td></tr>
+            <tr data-j="5"><th scope="row">Vendredi</th><td>11 h – 1 h</td></tr>
+            <tr data-j="6"><th scope="row">Samedi</th><td>11 h – 1 h</td></tr>
+            <tr data-j="0"><th scope="row">Dimanche</th><td>11 h – 1 h</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.1rem"><span class="statut" id="statut-info"></span></p>
+      </div>
+
+      <div class="rv" style="display:grid;gap:1.2rem;align-content:start">
+        <div class="bloc">
+          <h3>Commander</h3>
+          <p>Pour être servi plus rapidement, passez commande par téléphone : elle vous attendra prête.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+            <a class="btn btn--or" href="tel:+33767250992">07 67 25 09 92</a>
+            <a class="btn btn--uber" href="https://www.ubereats.com/fr/store/odelice-85/arvcv6uAU-CIbaX2Lfj9jA" target="_blank" rel="noopener">Uber Eats</a>
+          </div>
+        </div>
+        <div class="bloc">
+          <h3>Services</h3>
+          <ul class="paiements"><li>Sur place</li><li>À emporter</li><li>Livraison</li><li>Terrasse</li><li>Menu enfant</li></ul>
+        </div>
+        <div class="bloc">
+          <h3>Moyens de paiement</h3>
+          <ul class="paiements"><li>Espèces</li><li>Carte bancaire</li><li>Ticket Restaurant</li><li>Chèque-Vacances</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VENIR ===================== -->
+<section class="sec" id="venir" style="padding-top:0">
+  <div class="wrap">
+    <div class="filet rv"><span class="star"></span></div>
+    <div class="infos">
+      <div class="rv">
+        <h2 class="dsp">Nous <span class="or">trouver</span></h2>
+        <p style="margin:1.4rem 0;color:var(--sable-2);max-width:44ch">
+          Un peu à l'écart de la rue piétonne principale, donc plus calme —
+          à quelques minutes à pied du centre de Saint-Jean-de-Monts.
+        </p>
+        <p style="font-size:1.35rem;font-weight:800;margin:0 0 1.5rem;line-height:1.4;color:var(--sable)">
+          29 rue du Petit Marché<br>85160 Saint-Jean-de-Monts
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+          <a class="btn btn--or" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/dir/?api=1&amp;destination=O%27D%C3%A9lice%2085%2C%2029%20rue%20du%20Petit%20March%C3%A9%2C%2085160%20Saint-Jean-de-Monts">Lancer l'itinéraire</a>
+          <a class="btn btn--fant" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=O%27D%C3%A9lice%2085%20Saint-Jean-de-Monts">Voir sur Google Maps</a>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="plan">
+          <div class="plan__t">
+            <span>Plan d'accès</span>
+            <a target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&amp;query=O%27D%C3%A9lice%2085%20Saint-Jean-de-Monts">Ouvrir dans Maps ↗</a>
+          </div>
+          <div class="plan__v">
+            <div class="plan__f">
+              <b>29 rue du Petit Marché</b>
+              <span>85160 Saint-Jean-de-Monts</span>
+              <span>Le plan s'affiche sur le site publié.</span>
+            </div>
+            <iframe title="Plan d'accès O'Délices 85" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=29+rue+du+Petit+March%C3%A9,+85160+Saint-Jean-de-Monts&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL ===================== -->
+<section class="final">
+  <div class="wrap">
+    <p class="sur">Ouvert tous les jours de 11 h à 1 h</p>
+    <h2 class="dsp" style="font-size:clamp(2.2rem,1.3rem + 4vw,4.4rem);margin-top:.7rem">Faim ? <span class="or">On s'en occupe.</span></h2>
+    <p>Appelez, on prépare pendant que vous arrivez. Ou faites-vous livrer sans bouger.</p>
+    <div class="final__cta">
+      <a class="btn btn--or" href="tel:+33767250992">07 67 25 09 92</a>
+      <a class="btn btn--uber" href="https://www.ubereats.com/fr/store/odelice-85/arvcv6uAU-CIbaX2Lfj9jA" target="_blank" rel="noopener">Commander sur Uber Eats</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__g">
+      <div>
+        <p style="font-family:var(--display);font-weight:900;font-size:1.4rem;color:var(--sable);margin:0 0 .5rem">
+          O'Délices <span class="or-p">85</span></p>
+        <p style="margin:0;max-width:34ch">Street food des dunes — kebab, burgers, tacos, couscous
+          et spécialités orientales à Saint-Jean-de-Monts.</p>
+      </div>
+      <div><h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33767250992">07 67 25 09 92</a></li>
+          <li>29 rue du Petit Marché</li>
+          <li>85160 Saint-Jean-de-Monts</li>
+          <li>Tous les jours · 11 h – 1 h</li>
+        </ul>
+      </div>
+      <div><h4>Liens</h4>
+        <ul>
+          <li><a href="#carte">La carte</a></li>
+          <li><a href="https://www.ubereats.com/fr/store/odelice-85/arvcv6uAU-CIbaX2Lfj9jA" target="_blank" rel="noopener">Uber Eats</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=O%27D%C3%A9lice%2085%20Saint-Jean-de-Monts" target="_blank" rel="noopener">Google Maps</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__bas">
+      <span>© <span id="an">2026</span> O'Délices 85 — Tous droits réservés</span>
+      <span>Photos d'illustration non contractuelles</span>
+    </div>
+  </div>
+</footer>
+
+<div class="panier-bar" id="pbar">
+  <div class="panier-bar__in">
+    <div style="margin-right:auto"><b id="pbar-total">0,00 €</b><small id="pbar-n">0 article</small></div>
+    <button class="btn btn--fant" id="pbar-voir">Voir</button>
+    <a class="btn btn--or" href="tel:+33767250992">Appeler</a>
+  </div>
+</div>
+
+<div class="tiroir" id="tiroir" role="dialog" aria-modal="true" aria-label="Ma commande">
+  <div class="tiroir__fond" data-close></div>
+  <div class="tiroir__pan">
+    <div class="tiroir__h"><h2>Ma commande</h2><button class="x" data-close aria-label="Fermer">×</button></div>
+    <div class="tiroir__l" id="tiroir-l"></div>
+    <div class="tiroir__f">
+      <div class="total"><span>Total</span><span id="t-total">0,00 €</span></div>
+      <a class="btn btn--or" href="tel:+33767250992">Appeler pour commander</a>
+      <button class="btn btn--fant" id="t-copier">Copier la commande</button>
+      <button class="btn btn--fant" id="t-vider">Vider</button>
+      <p class="mini">Le récapitulatif reste sur votre téléphone : rien n'est envoyé automatiquement.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <p id="toast-m"></p>
+  <code id="toast-u"></code>
+  <div class="toast__b">
+    <button class="btn btn--or" id="toast-c">Copier</button>
+    <button class="btn btn--fant" id="toast-x">Fermer</button>
+  </div>
+</div>
+
+<button class="haut" id="haut-btn" aria-label="Revenir en haut">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"O'Délices 85",
+"description":"Kebab, burgers, tacos, couscous et spécialités orientales à Saint-Jean-de-Monts.",
+"servesCuisine":["Kebab","Burgers","Couscous","Street food"],"priceRange":"€",
+"telephone":"+33767250992","url":"https://odelices85.fr/",
+"address":{"@type":"PostalAddress","streetAddress":"29 rue du Petit Marché","postalCode":"85160","addressLocality":"Saint-Jean-de-Monts","addressCountry":"FR"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"01:00"}],
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.3","reviewCount":"299"},
+"hasMenu":"https://odelices85.fr/#carte"}
+</script>
+
+<script>
+(function(){
+"use strict";
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var TEL_AFF = '07 67 25 09 92';
+var enCadre = (window.self !== window.top);
+
+/* ============================================================
+   A · TOAST + LIENS (aucune redirection dans la page courante)
+   ============================================================ */
+var toast=document.getElementById('toast'), tM=document.getElementById('toast-m'),
+    tU=document.getElementById('toast-u'), tC=document.getElementById('toast-c');
+var tTimer=null, aCopier='';
+function montrer(msg,val,lab){
+  tM.textContent=msg; tU.textContent=val; aCopier=val;
+  tC.textContent=lab||'Copier'; toast.dataset.on='1';
+  clearTimeout(tTimer); tTimer=setTimeout(fermerToast,10000);
+}
+function fermerToast(){ toast.dataset.on='0'; }
+document.getElementById('toast-x').addEventListener('click',fermerToast);
+function copier(txt,btn){
+  function ok(){ var o=btn.textContent; btn.textContent='Copié ✓'; setTimeout(function(){ btn.textContent=o; },1600); }
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt).then(ok,function(){ secours(txt); ok(); }); }
+  else { secours(txt); ok(); }
+}
+function secours(txt){
+  var ta=document.createElement('textarea'); ta.value=txt;
+  ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+  ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
+}
+tC.addEventListener('click',function(){ copier(aCopier,this); });
+
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]'); if(!a) return;
+  var href=a.getAttribute('href');
+
+  if(href.charAt(0)==='#'){
+    if(href==='#') return;
+    var c=document.querySelector(href);
+    if(c){
+      e.preventDefault();
+      var y=c.getBoundingClientRect().top+scrollY-(href==='#haut'?0:105);
+      scrollTo({top:Math.max(y,0),behavior:reduce?'auto':'smooth'});
+      if(history.replaceState) history.replaceState(null,'',href);
+    }
+    return;
+  }
+  if(/^tel:/i.test(href)){
+    if(enCadre){ e.preventDefault(); montrer('Appelez O\u2019Délices 85 :',TEL_AFF,'Copier le numéro'); }
+    return;
+  }
+  if(/^https?:/i.test(href)){
+    e.preventDefault();
+    var w=null;
+    try{ w=window.open(href,'_blank','noopener'); }catch(err){ w=null; }
+    if(!w){ montrer('Ouverture bloquée par l\u2019aperçu. Adresse à ouvrir :',href,'Copier le lien'); }
+  }
+});
+
+/* ============================================================
+   B · LA CARTE — tout se modifie ici
+   p = prix seul · m = prix en menu (2ᵉ colonne)
+   ============================================================ */
+var CARTE=[
+{id:'burgers',nom:'Burgers',cols:['Seul','En menu'],
+ note:"En menu : frites maison + boisson au choix (soda 33 cl ou eau 50 cl). Red Bull et Monster ne peuvent pas être intégrés à une formule.",
+ items:[
+  {n:"Cheese burger",p:6.5,m:7.5},
+  {n:"Chicken burger",p:7.5,m:8.5},
+  {n:"Fish burger",p:7.5,m:8.5},
+  {n:"Végé burger",d:"steak végé + œuf + fromage",p:8,m:9,tag:'v'},
+  {n:"Double cheese",p:8,m:9},
+  {n:"Country",d:"steak + galette de pomme de terre + tranche de dinde + fromage",p:8.5,m:9.5},
+  {n:"Triple cheese",d:"3 steaks + 3 tranches de fromage",p:9.5,m:10.5},
+  {n:"Le 180",d:"steak 180 g + oignons caramélisés + fromage",p:13,m:14},
+  {n:"Façon bouchère",d:"2 steaks 150 g + 2 tranches de fromage",p:13.5,m:14.5},
+  {n:"Le 360",d:"2 steaks 180 g + oignons caramélisés + fromage",p:14,m:15},
+  {n:"Smash burger",d:"servi avec frites maison",p:11.5}
+ ]},
+{id:'formules',nom:'Formules',cols:['','En menu'],
+ note:"Deux burgers + frites maison + boisson.",
+ items:[
+  {n:"Formule 1",d:"cheese burger + double cheese",m:13},
+  {n:"Formule 2",d:"cheese burger + chicken burger",m:13},
+  {n:"Formule 3",d:"cheese burger + fish burger",m:13},
+  {n:"Formule 4",d:"cheese burger + croque-monsieur",m:13}
+ ]},
+{id:'sandwichs',nom:'Sandwichs classiques',cols:['Seul','En menu'],
+ note:"Pain au choix : pain blanc, galette, ou cheese naan (+ 1 €).",
+ items:[
+  {n:"Kébab",p:8,m:9},
+  {n:"Escalope",d:"escalope de poulet + fromage",p:8.5,m:9.5},
+  {n:"Steak américain",d:"2 steaks + fromage",p:8.5,m:9.5},
+  {n:"Chicken curry",d:"poulet mariné + fromage",p:8.5,m:9.5},
+  {n:"Kefta maison",p:8.5,m:9.5},
+  {n:"Merguez",p:9.5,m:10.5},
+  {n:"Avalanche",d:"kébab + merguez",p:10,m:11},
+  {n:"Royal kébab",d:"kébab + œuf + fromage",p:10,m:11},
+  {n:"Végétarien",d:"falafel",p:10.5,m:11.5,tag:'v'},
+  {n:"Cheese naan",d:"pain maison + 1 viande au choix",p:10.5,m:11.5},
+  {n:"Kébab maxi",d:"double pita + double portion de viande au choix",p:15.5,m:16.5}
+ ]},
+{id:'mixtes',nom:'Sandwichs mixtes',cols:['Seul','En menu'],
+ items:[
+  {n:"Boursin",d:"poulet + gruyère + Boursin + crème fraîche",p:9.5,m:10.5},
+  {n:"Montagnard",d:"poulet + raclette + bacon + galette de pomme de terre",p:9.5,m:10.5},
+  {n:"Duo",d:"viande kébab + chèvre + miel",p:9.5,m:10.5},
+  {n:"Radical",d:"1 steak + cordon bleu + fromage",p:9.5,m:10.5},
+  {n:"L'Oriental",d:"merguez + poivron + œuf",p:9.5,m:10.5},
+  {n:"Makloub O'Délices",p:10.5,m:11.5,tag:'n'},
+  {n:"Montois",d:"kébab + cordon bleu + jambon",p:11,m:12}
+ ]},
+{id:'tacos',nom:'Tacos',cols:['Seul','En menu'],
+ note:"Viandes au choix : chorizo, lardons, cordon bleu, kébab, grec, nuggets, steak haché bœuf, poulet, nature, tenders, bacon, merguez, kefta maison, poulet mariné curry.",
+ items:[
+  {n:'Le « M »',d:"1 viande",p:10,m:11},
+  {n:'Le « L »',d:"2 viandes",p:11,m:12},
+  {n:'Le « XL »',d:"3 viandes",p:13,m:14},
+  {n:'Le « XXL »',d:"4 viandes",p:15.5,m:16.5},
+  {n:'Le « XXXL »',d:"5 viandes",p:16.5,m:17.5},
+  {n:"Taco gratiné",d:"avec 1 fromage au choix",p:3,plus:true},
+  {n:"Supplément viande",p:2,plus:true}
+ ]},
+{id:'paninis',nom:'Paninis',
+ note:"Servis avec frites maison (sauf panini dessert).",
+ items:[
+  {n:"Panini classique",d:"viande bœuf, kébab, merguez, jambon, fromage ou chèvre-miel",p:7.5},
+  {n:"Savoyard",d:"lardons + fromage à raclette + galette de pomme de terre",p:8.5},
+  {n:"Nutella",p:3.5}
+ ]},
+{id:'assiettes',nom:'Assiettes',
+ note:"Servies avec boulgour et frites. Viandes : kébab, steak, escalope, merguez, kefta, cordon bleu, poulet curry, végétarien.",
+ items:[{n:"1 viande",p:11},{n:"2 viandes",p:14.5},{n:"3 viandes",p:16},{n:"3 côtelettes d'agneau",p:17}]},
+{id:'couscous',nom:'Couscous',
+ note:"Portion pour 1 personne.",
+ items:[{n:"Poulet",p:12},{n:"Poulet + merguez",p:14},{n:"Poulet + merguez + kefta",p:16},
+  {n:"Brochette d'agneau",p:17.5},{n:"Souris d'agneau",p:19.5}]},
+{id:'grillades',nom:'Grillades',
+ note:"Servies avec frites maison, boulgour et crudités.",
+ items:[{n:"Ojja merguez",p:12},{n:"Brochette mixte",d:"poulet + merguez + bœuf",p:15.5}]},
+{id:'texmex',nom:'Tex Mex',
+ note:"5 pièces servies avec frites maison.",
+ items:[{n:"Chicken wings crousti",p:9.5},{n:"Mozza panées",p:7.5},{n:"Nems poulet",p:7.5},
+  {n:"Tenders",p:7.5},{n:"Nuggets",p:6}]},
+{id:'ardoise',nom:'Ardoise familiale',
+ note:"Servie dans un seau avec frites maison et une bouteille de Coca-Cola 125 cl.",
+ items:[{n:"12 pièces",d:"2 mozzarellas panées + 3 chicken wings + 2 tenders + 3 nuggets + 2 bouchées de camembert",p:16.5}]},
+{id:'salades',nom:'Salades',
+ items:[{n:"César",d:"salade verte, tomate, poulet, croûtons",p:8},
+  {n:"Chèvre",d:"salade verte, tomate, chèvre chaud, noix",p:8,tag:'v'}]},
+{id:'barquettes',nom:'Barquettes',cols:['Moyenne','Grande'],
+ items:[{n:"Frites maison",p:5.5,m:6.5},{n:"Viande kébab",d:"viande de veau et de dinde",p:7,m:10}]},
+{id:'enfant',nom:'Menu enfant',
+ note:"Jusqu'à 10 ans.",
+ items:[{n:"Menu enfant",d:"cheeseburger ou 6 nuggets + frites + compote + Capri-Sun + surprise",p:8.5}]},
+{id:'desserts',nom:'Desserts',
+ items:[{n:"Tarte au Daim",p:3},{n:"Tiramisu maison",p:4}]},
+{id:'boissons',nom:'Boissons',
+ items:[{n:"Café",p:1},{n:"Eau",d:"bouteille 50 cl",p:1.5},{n:"Eau",d:"bouteille 150 cl",p:2},
+  {n:"Soda",d:"canette 33 cl — Coca-Cola, Fanta, Sprite, Ice Tea…",p:2},
+  {n:"Red Bull",d:"25 cl",p:3},{n:"Monster",d:"50 cl",p:4},
+  {n:"Soda",d:"bouteille 125 cl — Coca-Cola, Orangina, Sprite…",p:4}]}
+];
+var SAUCES=["Blanche","Mayo","Ketchup","Biggy burger","Brazil","Algérienne","Andalouse","Samouraï",
+"Barbecue","Curry","3 poivres","Moutarde","Cheezy","Chili thaï","Tartare"];
+
+function euro(v){ return v.toFixed(2).replace('.',',')+' €'; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+var menuEl=document.getElementById('menu'), tabsEl=document.getElementById('tabs');
+var html='', tabs='';
+
+CARTE.forEach(function(cat){
+  var deux = !!cat.cols;                       /* deux colonnes de prix ? */
+  var cls  = 'ligne' + (deux ? '' : ' ligne--1');
+  tabs += '<button type="button" data-go="'+cat.id+'">'+cat.nom+'</button>';
+  html += '<section class="cat" id="cat-'+cat.id+'" data-cat="'+cat.id+'">';
+  html += '<div class="cat__t"><h3>'+cat.nom+'</h3></div>';
+  if(cat.note){ html += '<p class="cat__note">'+cat.note+'</p>'; }
+
+  /* En-tête de colonnes : MÊME grille que les lignes → alignement garanti */
+  if(deux){
+    html += '<div class="'+cls+' cat__cols"><span></span><span>'+(cat.cols[0]||'&nbsp;')+'</span><span>'+cat.cols[1]+'</span></div>';
+  }
+
+  cat.items.forEach(function(it,i){
+    var k=(it.n+' '+(it.d||'')+' '+cat.nom).toLowerCase();
+    html += '<div class="'+cls+' item'+(i%2?' item--alt':'')+'" data-k="'+esc(k)+'">';
+    html += '<div class="item__i"><span class="item__n">'+esc(it.n);
+    if(it.tag==='v'){ html+='<span class="badge badge--v">Végé</span>'; }
+    if(it.tag==='n'){ html+='<span class="badge badge--n">Maison</span>'; }
+    html += '</span>';
+    if(it.d){ html += '<span class="item__d">'+esc(it.d)+'</span>'; }
+    html += '</div>';
+
+    var pre = it.plus ? '+ ' : '';
+    function cel(val,lib){
+      if(val==null){ return '<div class="item__c"><span class="p p--vide">—</span></div>'; }
+      return '<div class="item__c"><button class="p" data-n="'+esc(it.n)+'" data-v="'+esc(lib||'')+'" data-p="'+val+'">'+
+             (lib?'<i>'+esc(lib)+'</i>':'')+pre+euro(val)+'</button></div>';
+    }
+    if(deux){
+      html += cel(it.p, cat.cols[0]||'Prix');
+      html += cel(it.m, cat.cols[1]);
+    } else {
+      html += cel(it.p, '');
+    }
+    html += '</div>';
+  });
+
+  if(cat.id==='burgers'){
+    html += '<p class="astuce"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>Touchez un prix : le plat s\u2019ajoute à votre commande, en bas de l\u2019écran.</p>';
+  }
+  html += '</section>';
+});
+html += '<section class="cat"><div class="cat__t"><h3>Sauces</h3><em>au choix, offertes</em></div><ul class="sauces">';
+SAUCES.forEach(function(s){ html += '<li>'+s+'</li>'; });
+html += '</ul></section>';
+
+menuEl.innerHTML=html; tabsEl.innerHTML=tabs;
+
+/* ---------- Onglets ---------- */
+var tabBtns=tabsEl.querySelectorAll('button');
+tabBtns.forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById('cat-'+b.dataset.go);
+    scrollTo({top:el.getBoundingClientRect().top+scrollY-160,behavior:reduce?'auto':'smooth'});
+  });
+});
+function majTab(id){
+  tabBtns.forEach(function(b){
+    if(b.dataset.go===id){
+      b.setAttribute('aria-current','true');
+      b.scrollIntoView({block:'nearest',inline:'center',behavior:reduce?'auto':'smooth'});
+    } else { b.removeAttribute('aria-current'); }
+  });
+}
+if('IntersectionObserver' in window){
+  var spy=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ majTab(e.target.dataset.cat); } });
+  },{rootMargin:'-160px 0px -70% 0px'});
+  menuEl.querySelectorAll('.cat[data-cat]').forEach(function(s){ spy.observe(s); });
+}
+majTab(CARTE[0].id);
+
+/* ---------- Recherche ---------- */
+var q=document.getElementById('q'), rech=document.getElementById('rech'), vide=document.getElementById('vide');
+function filtrer(){
+  var v=q.value.trim().toLowerCase();
+  rech.dataset.full = v ? '1':'0';
+  var total=0;
+  menuEl.querySelectorAll('.cat').forEach(function(cat){
+    var n=0, items=cat.querySelectorAll('.item');
+    items.forEach(function(it){
+      var ok = !v || it.dataset.k.indexOf(v)!==-1;
+      it.hidden=!ok; if(ok) n++;
+    });
+    var head=cat.querySelector('.cat__cols');
+    if(head){ head.hidden = !!v; }
+    cat.hidden = items.length>0 && n===0;
+    total+=n;
+  });
+  vide.hidden = !(v && total===0);
+}
+q.addEventListener('input',filtrer);
+document.getElementById('q-clear').addEventListener('click',function(){ q.value=''; filtrer(); q.focus(); });
+
+/* ---------- Panier ---------- */
+var panier=[];
+var pbar=document.getElementById('pbar'), tiroir=document.getElementById('tiroir');
+var pTotal=document.getElementById('pbar-total'), pN=document.getElementById('pbar-n');
+var tList=document.getElementById('tiroir-l'), tTotal=document.getElementById('t-total');
+
+function maj(){
+  var t=0,n=0;
+  panier.forEach(function(l){ t+=l.p*l.q; n+=l.q; });
+  pTotal.textContent=euro(t); tTotal.textContent=euro(t);
+  pN.textContent = n + (n>1?' articles':' article');
+  pbar.dataset.on = n ? '1':'0';
+  if(!n){ tiroir.dataset.open='0'; }
+  var h='';
+  panier.forEach(function(l,i){
+    h += '<div class="lg"><div><b>'+esc(l.n)+'</b>'+(l.v?'<small>'+esc(l.v)+'</small>':'')+'</div>'+
+         '<div class="qte"><button data-m="'+i+'" aria-label="Retirer un">−</button><span>'+l.q+'</span>'+
+         '<button data-a="'+i+'" aria-label="Ajouter un">+</button></div>'+
+         '<div class="lg__p">'+euro(l.p*l.q)+'</div></div>';
+  });
+  tList.innerHTML = h || '<p style="color:#ABA394;padding:1.5rem 0">Votre commande est vide. Touchez un prix dans la carte pour ajouter un plat.</p>';
+}
+menuEl.addEventListener('click',function(e){
+  var b=e.target.closest('button.p');
+  if(!b || b.classList.contains('p--vide')) return;
+  var n=b.dataset.n, v=b.dataset.v, k=n+'|'+v;
+  var l=panier.filter(function(x){ return x.k===k; })[0];
+  if(l){ l.q++; } else { panier.push({k:k,n:n,v:v,p:parseFloat(b.dataset.p),q:1}); }
+  maj();
+  b.dataset.add='1'; setTimeout(function(){ delete b.dataset.add; },1000);
+});
+tList.addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.a!=null){ panier[b.dataset.a].q++; }
+  if(b.dataset.m!=null){
+    var i=b.dataset.m; panier[i].q--;
+    if(panier[i].q<=0){ panier.splice(i,1); }
+  }
+  maj();
+});
+document.getElementById('pbar-voir').addEventListener('click',function(){ tiroir.dataset.open='1'; });
+tiroir.addEventListener('click',function(e){ if(e.target.hasAttribute('data-close')){ tiroir.dataset.open='0'; } });
+addEventListener('keydown',function(e){ if(e.key==='Escape'){ tiroir.dataset.open='0'; fermerToast(); } });
+document.getElementById('t-vider').addEventListener('click',function(){ panier=[]; maj(); });
+document.getElementById('t-copier').addEventListener('click',function(){
+  var t="Commande O'Délices 85\n", s=0;
+  panier.forEach(function(l){ t+='• '+l.q+' × '+l.n+(l.v?' ('+l.v+')':'')+' — '+euro(l.p*l.q)+'\n'; s+=l.p*l.q; });
+  t+='Total : '+euro(s);
+  copier(t,this);
+});
+maj();
+
+/* ---------- Ouvert / fermé ---------- */
+function statut(){
+  var d=new Date(), h=d.getHours()+d.getMinutes()/60;
+  var ouvert=(h>=11)||(h<1);
+  var txt = ouvert ? 'Ouvert · ferme à 1 h' : 'Fermé · ouvre à 11 h';
+  ['statut-hero','statut-info'].forEach(function(id){
+    var el=document.getElementById(id); if(!el) return;
+    el.className='statut'; el.dataset.on = ouvert?'1':'0';
+    el.innerHTML='<i></i>'+txt;
+  });
+  var j=d.getDay();
+  document.querySelectorAll('#horaires tr').forEach(function(tr){
+    tr.dataset.today = (parseInt(tr.dataset.j,10)===j)?'1':'0';
+  });
+}
+statut(); setInterval(statut,60000);
+
+/* ---------- Menu mobile / header / défilement ---------- */
+var burger=document.getElementById('burger'), nav=document.getElementById('nav');
+burger.addEventListener('click',function(){
+  var o=burger.getAttribute('aria-expanded')==='true';
+  burger.setAttribute('aria-expanded',String(!o));
+  nav.dataset.open = o?'0':'1';
+});
+nav.addEventListener('click',function(e){
+  if(e.target.tagName==='A' && innerWidth<=1080){
+    burger.setAttribute('aria-expanded','false'); nav.dataset.open='0';
+  }
+});
+var hdr=document.getElementById('hdr'), prog=document.getElementById('prog'), haut=document.getElementById('haut-btn');
+function onScroll(){
+  var y=scrollY, max=document.body.scrollHeight-innerHeight;
+  hdr.dataset.fix = y>30?'1':'0';
+  prog.style.width = (max>0?(y/max)*100:0)+'%';
+  haut.dataset.on = y>900?'1':'0';
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+haut.addEventListener('click',function(){ scrollTo({top:0,behavior:reduce?'auto':'smooth'}); });
+
+/* ---------- Révélations ---------- */
+var rvs=document.querySelectorAll('.rv:not(.on)');
+if(reduce || !('IntersectionObserver' in window)){
+  rvs.forEach(function(el){ el.classList.add('on'); });
+}else{
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.1});
+  rvs.forEach(function(el,i){ el.style.transitionDelay=(Math.min(i%5,4)*70)+'ms'; io.observe(el); });
+}
+
+/* ---------- Parallaxe ---------- */
+if(!reduce){
+  var scene=document.querySelector('.hero__scene');
+  addEventListener('scroll',function(){
+    var y=scrollY;
+    if(y<innerHeight){ scene.style.transform='translateY('+(y*0.14)+'px)'; }
+  },{passive:true});
+}
+
+document.getElementById('an').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
